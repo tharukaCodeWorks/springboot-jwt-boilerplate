@@ -13,10 +13,10 @@ import java.io.IOException;
 
 @Service
 public class EmailService {
-    SendGrid sg = new SendGrid("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");
+    SendGrid sg = new SendGrid("SENDGRID_KEY");
     Request request = new Request();
     @Autowired
-    @Qualifier("gmail")
+    @Qualifier("email")
     private JavaMailSender javaMailSender;
 
     public void sendHtml(String subject, String body, MailMode mailMode, String... to) throws  IOException {
