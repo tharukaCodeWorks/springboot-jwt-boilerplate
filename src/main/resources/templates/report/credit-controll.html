@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.w3.org/1999/xhtml">
+<title>report</title>
+
+<head>
+    <style>
+        body{
+            font-family: Arial;
+        }
+        table{
+            margin: 3rem;
+            width: 90%;
+        }
+        table, th, td {
+            border: 1px solid black;
+            border-collapse: collapse;
+            margin-right: 0px;
+            border-radius: 10px;
+            border-color: #fff;
+
+        }
+
+        th, td {
+            padding: 15px;
+        }
+
+        th{
+            background: #4682b4;
+        }
+
+        .right{
+            width: 33.3%;
+        }
+
+        .left{
+            width: 33.3%;
+            background-color: grey ;
+        }
+        .mid{
+            width:33.3%;
+            text-align: center;
+        }
+        .subtext{
+            margin: 5px;
+        }
+
+    </style>
+</head>
+<body>
+
+
+<div style="width:100%">
+    <div style="display: flex ; flex-direction: row">
+
+        <div class="left">
+
+        </div>
+
+
+        <div class="mid">
+            <h1>CCMS</h1>
+            <p class="subtext">CCMS, Kandy</p>
+            <p class="subtext">081-22222333</p>
+        </div>
+
+        <div class="right">
+
+        </div>
+
+    </div>
+
+    <table>
+        <tr style="color: #fff;">
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Hospital</th>
+            <th>Booking Date</th>
+            <th>Amount</th>
+        </tr>
+        <tr th:each="item: ${data}">
+            <td th:text="${item.getFirstName()}" />
+            <td th:text="${item.getLastName()}" />
+            <td th:text="${item.getHospitalName()}" />
+            <td th:text="${item.getBookingDate()}" />
+            <td th:text="${item.getEarnings()}" />
+        </tr>
+        <tr style="background-color: burlywood;">
+            <td colspan="4"> <b>Total</b></td>
+            <td><b th:text="${total}" /></td>
+        </tr>
+    </table>
+
+</div>
+</body>
+</html>

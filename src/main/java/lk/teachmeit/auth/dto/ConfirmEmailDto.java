@@ -1,4 +1,4 @@
-package lk.teachmeit.app.dto;
+package lk.teachmeit.auth.dto;
 
 public class ConfirmEmailDto {
     private String email;
