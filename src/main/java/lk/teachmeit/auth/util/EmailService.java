@@ -33,7 +33,7 @@ public class EmailService {
     }
 
     private void sendHtmlEmailSendgrid(String subject, String body, MailMode mailMode, String... to) throws IOException{
-        Mail mail = new Mail(new Email("info@mexxar.com"), subject, new Email(to[0]), new Content("text/html", body));
+        Mail mail = new Mail(new Email("info@sample.com"), subject, new Email(to[0]), new Content("text/html", body));
         try {
             request.setMethod(Method.POST);
             request.setEndpoint("mail/send");
@@ -48,7 +48,7 @@ public class EmailService {
         MimeMessagePreparator preparator = mimeMessage -> {
             MimeMessageHelper message = new MimeMessageHelper(mimeMessage);
             message.setTo(to[0]);
-            message.setFrom("info@mexxar.com", "Mexxar Sample");
+            message.setFrom("info@sample.com", "**** Sample");
             message.setSubject(subject);
 //            if (StringUtils.isNotBlank(ccAddresses))
 //                message.setCc(ccAddresses.split("[;,]"));
@@ -60,7 +60,7 @@ public class EmailService {
     }
 
     public void sendEmail(String subject, String body, MailMode mailMode, String... to) throws  IOException {
-        Mail mail = new Mail(new Email("info@mexxar.com"), subject, new Email(to[0]), new Content("text/text", body));
+        Mail mail = new Mail(new Email("info@sample.com"), subject, new Email(to[0]), new Content("text/text", body));
         try {
             request.setMethod(Method.POST);
             request.setEndpoint("mail/send");

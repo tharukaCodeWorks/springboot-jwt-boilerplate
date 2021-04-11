@@ -17,12 +17,11 @@ public class UserDto {
     private long dailyTarget;
     private long teamId;
     private String gender;
-    private String websocketToken;
 
     public UserDto() {
     }
 
-    public UserDto(String firstName, String lastName, String avatar, String email, String password, long userRoleId, String companyPhoneNumber, long dailyTarget, long teamId, String gender, String websocketToken) {
+    public UserDto(String firstName, String lastName, String avatar, String email, String password, long userRoleId, String companyPhoneNumber, long dailyTarget, long teamId, String gender) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.avatar = avatar;
@@ -33,15 +32,6 @@ public class UserDto {
         this.dailyTarget = dailyTarget;
         this.teamId = teamId;
         this.gender = gender;
-        this.websocketToken = websocketToken;
-    }
-
-    public String getWebsocketToken() {
-        return websocketToken;
-    }
-
-    public void setWebsocketToken(String websocketToken) {
-        this.websocketToken = websocketToken;
     }
 
     public String getGender() {

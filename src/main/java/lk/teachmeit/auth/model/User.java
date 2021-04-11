@@ -21,6 +21,8 @@ public class User implements IModel{
     private String avatar;
     private String referralCode;
     @Column
+    private String emailVerifyCode;
+    @Column
     @JsonIgnore
     private String password;
     @Column
@@ -43,20 +45,37 @@ public class User implements IModel{
     public User() {
     }
 
-    public User(long id, String firstName, String lastName, String email, String avatar, String referralCode, String password, String passwordResetCode, String isEmailVerified, Role role, Set<Permission> permissions, String gender, String websocketToken) {
+    public User(long id, String firstName, String lastName, String email, String avatar, String referralCode, String emailVerifyCode, String password, String passwordResetCode, String isEmailVerified, Role role, String gender, String websocketToken, Set<Permission> permissions) {
         this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
         this.avatar = avatar;
         this.referralCode = referralCode;
+        this.emailVerifyCode = emailVerifyCode;
         this.password = password;
         this.passwordResetCode = passwordResetCode;
         this.isEmailVerified = isEmailVerified;
         this.role = role;
-        this.permissions = permissions;
         this.gender = gender;
         this.websocketToken = websocketToken;
+        this.permissions = permissions;
+    }
+
+    public String getEmailVerifyCode() {
+        return emailVerifyCode;
+    }
+
+    public void setEmailVerifyCode(String emailVerifyCode) {
+        this.emailVerifyCode = emailVerifyCode;
+    }
+
+    public Role getRole() {
+        return role;
+    }
+
+    public void setRole(Role role) {
+        this.role = role;
     }
 
     public String getWebsocketToken() {
