@@ -3,9 +3,9 @@ package lk.teachmeit.auth.util;
 import java.util.Random;
 
 public class RandomValueUtil {
-    public static String getRandomNumberString() {
+    public static String getRandomNumberString(int bound) {
         Random rnd = new Random();
-        int number = rnd.nextInt(999999);
+        int number = rnd.nextInt(bound);
         return String.format("%06d", number);
     }
 

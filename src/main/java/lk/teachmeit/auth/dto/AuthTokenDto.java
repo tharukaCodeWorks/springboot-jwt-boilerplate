@@ -1,14 +1,14 @@
-package lk.teachmeit.auth.model;
+package lk.teachmeit.auth.dto;
 
-public class AuthToken {
+public class AuthTokenDto {
 
     private String token;
 
-    public AuthToken(){
+    public AuthTokenDto(){
 
     }
 
-    public AuthToken(String token){
+    public AuthTokenDto(String token){
         this.token = token;
     }
 

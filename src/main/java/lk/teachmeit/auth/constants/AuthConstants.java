@@ -1,6 +1,6 @@
-package lk.teachmeit.auth.model;
+package lk.teachmeit.auth.constants;
 
-public class Constants {
+public class AuthConstants {
 
     public static final long ACCESS_TOKEN_VALIDITY_SECONDS = 744*60*60;
     public static final String SIGNING_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9anVzdCBlbmNvZGVkanVzdCBlbmNvZGVkanVzdCBlbmNvZGVkanVzdCBlbmNvZGVkanVzdCBlbmNvZGVk";

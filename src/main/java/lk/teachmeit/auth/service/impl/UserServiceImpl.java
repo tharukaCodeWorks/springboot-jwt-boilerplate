@@ -25,13 +25,8 @@ public class UserServiceImpl implements UserDetailsService, UserService {
 	
 	@Autowired
 	private UserDao userDao;
-
-	@Autowired
-	private BCryptPasswordEncoder bcryptEncoder;
 	@Autowired
 	private RoleService roleService;
-	@Autowired
-	private PermissionDao permissionDao;
 
 	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
 		User user = userDao.findByEmail(username);
@@ -44,11 +39,9 @@ public class UserServiceImpl implements UserDetailsService, UserService {
 	private Set<SimpleGrantedAuthority> getAuthority(User user) {
         Set<SimpleGrantedAuthority> authorities = new HashSet<>();
 		user.getPermissions().forEach(role -> {
-			//authorities.add(new SimpleGrantedAuthority(role.getName()));
             authorities.add(new SimpleGrantedAuthority("ROLE_" + role.getName()));
 		});
 		return authorities;
-		//return Arrays.asList(new SimpleGrantedAuthority("ROLE_ADMIN"));
 	}
 
 	public List<User> findAll() {
@@ -59,6 +52,11 @@ public class UserServiceImpl implements UserDetailsService, UserService {
 
 	public List<User> getByPermission(String permission){
 		return userDao.findByPermissionsName(permission);
+	}
+
+	@Override
+	public boolean isUserExists(String email) {
+		return userDao.existsByEmail(email);
 	}
 
 	@Override
@@ -78,10 +76,6 @@ public class UserServiceImpl implements UserDetailsService, UserService {
 
 	@Override
     public User save(User user) {
-//	    Set<Role> roles = new HashSet<>();
-//	    Role role = roleDao.findRoleByName("");
-//	    roles.add(role);
-//		user.setPermissions(roles);
 		user = userDao.save(user);
         return user;
     }

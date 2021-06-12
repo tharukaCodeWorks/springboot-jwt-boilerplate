@@ -6,7 +6,7 @@ import javax.persistence.*;
 import java.util.Set;
 
 @Entity
-public class User implements IModel{
+public class User {
 
     @Id
     @GeneratedValue(strategy= GenerationType.IDENTITY)
@@ -19,7 +19,6 @@ public class User implements IModel{
     private String email;
     @Column
     private String avatar;
-    private String referralCode;
     @Column
     private String emailVerifyCode;
     @Column
@@ -33,7 +32,6 @@ public class User implements IModel{
     @OneToOne
     private Role role;
     private String gender;
-    private String websocketToken;
 
     @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     @JoinTable(name = "PERMISSIONS", joinColumns = {
@@ -45,20 +43,18 @@ public class User implements IModel{
     public User() {
     }
 
-    public User(long id, String firstName, String lastName, String email, String avatar, String referralCode, String emailVerifyCode, String password, String passwordResetCode, String isEmailVerified, Role role, String gender, String websocketToken, Set<Permission> permissions) {
+    public User(long id, String firstName, String lastName, String email, String avatar, String emailVerifyCode, String password, String passwordResetCode, String isEmailVerified, Role role, String gender,  Set<Permission> permissions) {
         this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
         this.avatar = avatar;
-        this.referralCode = referralCode;
         this.emailVerifyCode = emailVerifyCode;
         this.password = password;
         this.passwordResetCode = passwordResetCode;
         this.isEmailVerified = isEmailVerified;
         this.role = role;
         this.gender = gender;
-        this.websocketToken = websocketToken;
         this.permissions = permissions;
     }
 
@@ -78,28 +74,12 @@ public class User implements IModel{
         this.role = role;
     }
 
-    public String getWebsocketToken() {
-        return websocketToken;
-    }
-
-    public void setWebsocketToken(String websocketToken) {
-        this.websocketToken = websocketToken;
-    }
-
     public String getGender() {
         return gender;
     }
 
     public void setGender(String gender) {
         this.gender = gender;
-    }
-
-    public String getReferralCode() {
-        return referralCode;
-    }
-
-    public void setReferralCode(String referralCode) {
-        this.referralCode = referralCode;
     }
 
     public Role getUserRole() {

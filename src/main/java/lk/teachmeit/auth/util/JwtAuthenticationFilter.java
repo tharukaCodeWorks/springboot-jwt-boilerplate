@@ -2,7 +2,7 @@ package lk.teachmeit.auth.util;
 
 import io.jsonwebtoken.ExpiredJwtException;
 import io.jsonwebtoken.SignatureException;
-import lk.teachmeit.auth.model.Constants;
+import lk.teachmeit.auth.constants.AuthConstants;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -29,11 +29,11 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
 
     @Override
     protected void doFilterInternal(HttpServletRequest req, HttpServletResponse res, FilterChain chain) throws IOException, ServletException {
-        String header = req.getHeader(Constants.HEADER_STRING);
+        String header = req.getHeader(AuthConstants.HEADER_STRING);
         String username = null;
         String authToken = null;
-        if (header != null && header.startsWith(Constants.TOKEN_PREFIX)) {
-            authToken = header.replace(Constants.TOKEN_PREFIX,"");
+        if (header != null && header.startsWith(AuthConstants.TOKEN_PREFIX)) {
+            authToken = header.replace(AuthConstants.TOKEN_PREFIX,"");
             try {
                 username = jwtTokenUtil.getUsernameFromToken(authToken);
             } catch (IllegalArgumentException e) {

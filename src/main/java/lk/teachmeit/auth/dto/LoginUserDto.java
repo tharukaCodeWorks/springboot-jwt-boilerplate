@@ -1,6 +1,6 @@
-package lk.teachmeit.auth.model;
+package lk.teachmeit.auth.dto;
 
-public class LoginUser {
+public class LoginUserDto {
 
     private String email;
     private String password;

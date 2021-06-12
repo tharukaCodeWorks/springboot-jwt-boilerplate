@@ -4,7 +4,7 @@ import javax.persistence.*;
 import java.util.List;
 
 @Entity
-public class Role implements IModel {
+public class Role {
 
     @Id
     @GeneratedValue(strategy= GenerationType.IDENTITY)

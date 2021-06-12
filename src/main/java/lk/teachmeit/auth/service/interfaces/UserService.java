@@ -16,4 +16,6 @@ public interface UserService {
     User setUserRole(long userRoleId, User user);
 
     List<User> getByPermission(String permission);
+
+    boolean isUserExists(String email);
 }

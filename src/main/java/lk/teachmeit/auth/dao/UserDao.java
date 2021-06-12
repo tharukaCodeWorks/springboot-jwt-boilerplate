@@ -19,7 +19,5 @@ public interface UserDao extends CrudRepository<User, Long> {
     User findByEmail(String email);
     List<User> findByPermissionsName(String permissionName);
     List<User> findByRoleId(long roleId);
-    @Modifying
-    @Query("update User ear set ear.websocketToken = :token where ear.id = :id")
-    int setWebsocketTokenFor(@Param("token") String token, @Param("id") Long id);
+    boolean existsByEmail(String email);
 }

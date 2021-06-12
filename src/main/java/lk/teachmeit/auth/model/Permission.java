@@ -15,10 +15,6 @@ public class Permission {
     @Column
     private String description;
 
-//    @ManyToMany(mappedBy = "")
-//    private List<UserRole> userRoles;
-
-
     public Permission() {
     }
 

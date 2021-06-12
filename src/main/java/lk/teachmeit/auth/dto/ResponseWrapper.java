@@ -1,26 +1,24 @@
-package lk.teachmeit.auth.model;
+package lk.teachmeit.auth.dto;
 
-import java.util.List;
-
-public class ResponseWrapper<T> {
-    private List<T> body;
+public class ResponseWrapper {
+    private Object body;
     private String status;
     private String message;
 
     public ResponseWrapper() {
     }
 
-    public ResponseWrapper(List<T> body, String status, String message) {
+    public ResponseWrapper(Object body, String status, String message) {
         this.body = body;
         this.status = status;
         this.message = message;
     }
 
-    public List<T> getBody() {
+    public Object getBody() {
         return body;
     }
 
-    public void setBody(List<T> body) {
+    public void setBody(Object body) {
         this.body = body;
     }
 

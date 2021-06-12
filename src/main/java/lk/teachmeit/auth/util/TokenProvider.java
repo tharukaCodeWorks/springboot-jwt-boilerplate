@@ -1,7 +1,7 @@
 package lk.teachmeit.auth.util;
 
 import io.jsonwebtoken.*;
-import lk.teachmeit.auth.model.Constants;
+import lk.teachmeit.auth.constants.AuthConstants;
 import lk.teachmeit.auth.model.User;
 import lk.teachmeit.auth.service.interfaces.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -41,7 +41,7 @@ public class TokenProvider implements Serializable {
 
     private Claims getAllClaimsFromToken(String token) {
         return Jwts.parser()
-                .setSigningKey(Constants.SIGNING_KEY)
+                .setSigningKey(AuthConstants.SIGNING_KEY)
                 .parseClaimsJws(token)
                 .getBody();
     }
@@ -57,10 +57,10 @@ public class TokenProvider implements Serializable {
                 .collect(Collectors.joining(","));
         return Jwts.builder()
                 .setSubject(authentication.getName())
-                .claim(Constants.AUTHORITIES_KEY, authorities)
-                .signWith(SignatureAlgorithm.HS256, Constants.SIGNING_KEY)
+                .claim(AuthConstants.AUTHORITIES_KEY, authorities)
+                .signWith(SignatureAlgorithm.HS256, AuthConstants.SIGNING_KEY)
                 .setIssuedAt(new Date(System.currentTimeMillis()))
-                .setExpiration(new Date(System.currentTimeMillis() + Constants.ACCESS_TOKEN_VALIDITY_SECONDS*1000))
+                .setExpiration(new Date(System.currentTimeMillis() + AuthConstants.ACCESS_TOKEN_VALIDITY_SECONDS*1000))
                 .compact();
     }
 
@@ -73,14 +73,14 @@ public class TokenProvider implements Serializable {
 
     UsernamePasswordAuthenticationToken getAuthentication(final String token, final Authentication existingAuth, final UserDetails userDetails) {
 
-        final JwtParser jwtParser = Jwts.parser().setSigningKey(Constants.SIGNING_KEY);
+        final JwtParser jwtParser = Jwts.parser().setSigningKey(AuthConstants.SIGNING_KEY);
 
         final Jws<Claims> claimsJws = jwtParser.parseClaimsJws(token);
 
         final Claims claims = claimsJws.getBody();
 
         final Collection<? extends GrantedAuthority> authorities =
-                Arrays.stream(claims.get(Constants.AUTHORITIES_KEY).toString().split(","))
+                Arrays.stream(claims.get(AuthConstants.AUTHORITIES_KEY).toString().split(","))
                         .map(SimpleGrantedAuthority::new)
                         .collect(Collectors.toList());
 
@@ -88,8 +88,8 @@ public class TokenProvider implements Serializable {
     }
 
     public User getAuthUser(HttpServletRequest req) {
-        String header = req.getHeader(Constants.HEADER_STRING);
-        String authToken = header.replace(Constants.TOKEN_PREFIX,"");
+        String header = req.getHeader(AuthConstants.HEADER_STRING);
+        String authToken = header.replace(AuthConstants.TOKEN_PREFIX,"");
         User authUser = userService.findOne(getUsernameFromToken(authToken));
 
         return authUser;
