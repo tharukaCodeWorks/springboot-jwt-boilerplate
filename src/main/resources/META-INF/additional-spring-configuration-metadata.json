@@ -1,0 +1,23 @@
+{
+  "properties": [
+    {
+      "name": "email.username",
+      "type": "java.lang.String",
+      "description": "Description for email.username."
+    },
+    {
+      "name": "email.password",
+      "type": "java.lang.String",
+      "description": "Description for email.password."
+    },
+    {
+      "name": "email.host",
+      "type": "java.lang.String",
+      "description": "Description for email.host."
+    },
+    {
+      "name": "upload.path",
+      "type": "java.lang.String",
+      "description": "Description for upload.path."
+    }
+  ] }
