@@ -12,3 +12,5 @@ Forgot Password
 Reset Password
 
 Confirm Email
+
+Initial Data Seeder
