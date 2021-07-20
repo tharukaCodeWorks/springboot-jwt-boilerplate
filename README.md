@@ -3,14 +3,14 @@ SpringBoot Authentication With JWT - BoilerPlate
 
 # Features
 
-Sign In
+🚀 Sign In
 
-Sign Up
+🚀 Sign Up
 
-Forgot Password
+🚀 Forgot Password
 
-Reset Password
+🚀 Reset Password
 
-Confirm Email
+🚀 Confirm Email
 
-Initial Data Seeder
+🚀 Initial Data Seeder
